@@ -5,6 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#8f1f3a" />
   <title>My Katieee ❤️</title>
+  <link rel="canonical" href="https://katieee.com/" />
+
+  <meta name="description" content="A little corner of the internet made for my Katieee — our calls, our milestones, and all the little moments that made me fall for you." />
+
+  <meta property="og:title" content="My Katieee ❤️" />
+  <meta property="og:site_name" content="My Katieee" />
+  <meta property="og:description" content="A little corner of the internet made just for you — our calls, our milestones, and the little moments I never want to forget." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://katieee.com/" />
+  <meta property="og:image" content="https://katieee.com/share-card.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="My Katieee ❤️" />
+  <meta name="twitter:description" content="A little corner of the internet made just for you." />
+  <meta name="twitter:image" content="https://katieee.com/share-card.png" />
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 
   <style>
     :root{
@@ -70,10 +87,22 @@
     .heart2{right:8%; top:18%; font-size:22px; animation-delay:-2s}
     .heart3{left:12%; bottom:18%; font-size:18px; animation-delay:-4s}
     .heart4{right:10%; bottom:10%; font-size:26px; animation-delay:-6s}
-    .food1{left:13%; top:42%; font-size:24px; animation-delay:-1s}
-    .food2{right:13%; top:54%; font-size:22px; animation-delay:-5s}
-    .food3{left:16%; bottom:30%; font-size:20px; animation-delay:-7s}
-    .food4{right:17%; bottom:34%; font-size:24px; animation-delay:-3s}
+    .food1{left:13%; top:42%; font-size:24px}
+    .food2{right:13%; top:54%; font-size:22px}
+    .food3{left:16%; bottom:30%; font-size:20px}
+    .food4{right:17%; bottom:34%; font-size:24px}
+
+    .food1,.food2,.food3,.food4{
+      opacity:0;
+      transform:translateY(12px) scale(.8);
+      transition:opacity .9s ease, transform .9s ease;
+      animation:none;
+    }
+
+    .food-pop{
+      opacity:.27 !important;
+      transform:translateY(0) scale(1) !important;
+    }
 
     @keyframes drift{
       0%,100%{transform:translateY(0) rotate(-6deg) scale(1)}
@@ -444,13 +473,59 @@
       letter-spacing:.35em;
     }
 
+
+    .section{
+      opacity:0;
+      transform:translateY(26px);
+      transition:opacity .85s ease, transform .85s ease;
+    }
+
+    .section.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    .hero{
+      animation:heroIn 1s ease both;
+    }
+
+    @keyframes heroIn{
+      from{opacity:0; transform:translateY(18px) scale(.985)}
+      to{opacity:1; transform:translateY(0) scale(1)}
+    }
+
+    @keyframes tinyShake{
+      0%,100%{transform:translateX(0)}
+      25%{transform:translateX(-5px)}
+      75%{transform:translateX(5px)}
+    }
+
+    .shake{animation:tinyShake .28s ease 2}
+
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+      }
+      .section{opacity:1;transform:none}
+    }
+
     @media (max-width:720px){
-      .hero-inner{padding:44px 22px 36px}
-      .section{padding:28px 18px}
+      body{padding:14px 12px 40px}
+      .hero,.section{border-radius:24px}
+      .hero-inner{padding:42px 20px 34px}
+      h1{font-size:clamp(3rem,15vw,5rem)}
+      .sub{font-size:1rem;line-height:1.75}
+      .section{padding:27px 17px}
       .stats, .miss-grid{grid-template-columns:1fr}
-      .letter{font-size:1rem; line-height:1.85}
+      .letter{font-size:1rem; line-height:1.82}
+      .stat,.miss{border-radius:20px}
+      .call-card{border-radius:24px}
       .call-actions{flex-direction:column}
       .action{width:100%}
+      .float{font-size:18px !important}
     }
   </style>
 </head>
@@ -606,7 +681,7 @@
         <div class="call-name">Katieee</div>
         <div class="call-status">incoming video call<span class="dots" id="dots">...</span></div>
         <div class="call-actions">
-          <button class="action decline" type="button">Decline</button>
+          <button class="action decline" id="declineBtn" type="button">Decline</button>
           <button class="action answer" id="answerBtn" type="button">Answer</button>
         </div>
         <div class="call-message" id="callMessage">
@@ -664,6 +739,41 @@
       state = (state + 1) % 4;
       dots.textContent = '.'.repeat(state || 3);
     }, 450);
+
+    // Soft reveal as she scrolls.
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    sections.forEach(section => observer.observe(section));
+
+    // Her favourite foods only pop up occasionally.
+    const foods = [...document.querySelectorAll('.food1,.food2,.food3,.food4')];
+    function showRandomFood(){
+      const food = foods[Math.floor(Math.random() * foods.length)];
+      food.classList.add('food-pop');
+      setTimeout(() => food.classList.remove('food-pop'), 2400);
+      const next = 4500 + Math.random() * 6000;
+      setTimeout(showRandomFood, next);
+    }
+    setTimeout(showRandomFood, 2200);
+
+    // There is only one correct answer to Katieee calling 😌
+    const declineBtn = document.getElementById('declineBtn');
+    declineBtn.addEventListener('click', () => {
+      const card = declineBtn.closest('.call-card');
+      card.classList.remove('shake');
+      void card.offsetWidth;
+      card.classList.add('shake');
+      declineBtn.textContent = 'Nice try 😌';
+      setTimeout(() => declineBtn.textContent = 'Decline', 1500);
+    });
+
   </script>
 </body>
 </html>
