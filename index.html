@@ -6,7 +6,6 @@
   <meta name="theme-color" content="#8f1f3a" />
   <title>My Katieee ❤️</title>
   <link rel="canonical" href="https://katieee.com/" />
-
   <meta name="description" content="A little corner of the internet made for my Katieee — our calls, our milestones, and all the little moments that made me fall for you." />
 
   <meta property="og:title" content="My Katieee ❤️" />
@@ -44,7 +43,7 @@
     html,body{
       margin:0;
       min-height:100%;
-      font-family: Georgia, "Times New Roman", serif;
+      font-family:Georgia, "Times New Roman", serif;
       color:var(--text);
       scroll-behavior:smooth;
     }
@@ -67,10 +66,95 @@
       content:"";
       position:fixed;
       inset:0;
-      background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+      background-image:radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
       background-size:22px 22px;
       opacity:.16;
       pointer-events:none;
+    }
+
+    body.locked{overflow:hidden}
+
+    .anniversary-banner{
+      position:fixed;
+      top:12px;
+      left:50%;
+      transform:translateX(-50%);
+      z-index:30;
+      background:rgba(255,245,248,.12);
+      border:1px solid rgba(255,225,232,.26);
+      color:#fff7fa;
+      padding:10px 16px;
+      border-radius:999px;
+      backdrop-filter:blur(12px);
+      -webkit-backdrop-filter:blur(12px);
+      font-family:"Segoe UI", system-ui, sans-serif;
+      font-size:.86rem;
+      letter-spacing:.04em;
+      box-shadow:0 10px 24px rgba(39,4,16,.18);
+      display:none;
+    }
+
+    .anniversary-banner.show{display:block}
+
+    .entry-screen{
+      position:fixed;
+      inset:0;
+      z-index:50;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:
+        radial-gradient(circle at 50% 22%, rgba(255,255,255,.08), transparent 25%),
+        linear-gradient(145deg, rgba(77,7,25,.97), rgba(125,21,49,.97), rgba(176,40,75,.97));
+      transition:opacity .55s ease, visibility .55s ease;
+    }
+
+    .entry-screen.hidden{
+      opacity:0;
+      visibility:hidden;
+      pointer-events:none;
+    }
+
+    .entry-card{
+      width:min(500px,100%);
+      text-align:center;
+      background:rgba(255,240,244,.09);
+      border:1px solid rgba(255,225,232,.18);
+      border-radius:30px;
+      padding:34px 24px;
+      box-shadow:0 26px 70px rgba(22,0,7,.35);
+      backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
+    }
+
+    .entry-card .tiny{
+      font-family:"Segoe UI", system-ui, sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.22em;
+      font-size:.74rem;
+      color:var(--soft);
+      opacity:.92;
+      margin-bottom:12px;
+    }
+
+    .entry-card h2{
+      margin:0;
+      font-size:clamp(2.5rem,10vw,4.2rem);
+      line-height:.95;
+      color:#fff7fa;
+    }
+
+    .entry-card p{
+      margin:18px auto 0;
+      max-width:360px;
+      line-height:1.8;
+      font-size:1.03rem;
+      color:#fff2f5;
+    }
+
+    .entry-card button{
+      margin-top:24px;
     }
 
     .float{
@@ -110,12 +194,12 @@
     }
 
     .wrap{
-      width:min(900px, 100%);
+      width:min(900px,100%);
       position:relative;
       z-index:1;
     }
 
-    .hero, .section{
+    .hero,.section{
       background:linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.05));
       border:1px solid var(--line);
       border-radius:32px;
@@ -126,6 +210,12 @@
 
     .hero{
       overflow:hidden;
+      animation:heroIn 1s ease both;
+    }
+
+    @keyframes heroIn{
+      from{opacity:0; transform:translateY(18px) scale(.985)}
+      to{opacity:1; transform:translateY(0) scale(1)}
     }
 
     .hero-inner{
@@ -171,6 +261,14 @@
     .section{
       margin-top:20px;
       padding:34px 24px;
+      opacity:0;
+      transform:translateY(26px);
+      transition:opacity .85s ease, transform .85s ease;
+    }
+
+    .section.visible{
+      opacity:1;
+      transform:translateY(0);
     }
 
     .section h2{
@@ -189,51 +287,11 @@
       color:#fff7fa;
     }
 
-    .letter p{
-      margin:0 0 18px;
-    }
+    .letter p{margin:0 0 18px}
 
     .highlight{
       color:var(--gold);
       font-weight:700;
-    }
-
-    .stats{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0,1fr));
-      gap:16px;
-      margin-top:8px;
-    }
-
-    .stat{
-      background:var(--card-strong);
-      border:1px solid rgba(255,225,232,.18);
-      border-radius:24px;
-      padding:18px 16px;
-      text-align:center;
-      box-shadow:0 10px 24px rgba(39,4,16,.12);
-    }
-
-    .stat .emoji{
-      font-size:1.35rem;
-      display:block;
-      margin-bottom:8px;
-    }
-
-    .stat .label{
-      font-family:"Segoe UI", system-ui, sans-serif;
-      font-size:.78rem;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:var(--soft);
-      margin-bottom:7px;
-    }
-
-    .stat .value{
-      font-size:1.14rem;
-      line-height:1.5;
-      font-weight:700;
-      color:#fff7fa;
     }
 
     .counter{
@@ -262,7 +320,112 @@
       text-transform:uppercase;
     }
 
-    .miss-grid{
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:16px;
+      margin-top:8px;
+    }
+
+    .stat,.miss,.love-card,.future-card{
+      background:var(--card-strong);
+      border:1px solid rgba(255,225,232,.18);
+      border-radius:24px;
+      padding:18px 16px;
+      box-shadow:0 10px 24px rgba(39,4,16,.12);
+    }
+
+    .stat{text-align:center}
+
+    .stat .emoji{
+      font-size:1.35rem;
+      display:block;
+      margin-bottom:8px;
+    }
+
+    .stat .label{
+      font-family:"Segoe UI", system-ui, sans-serif;
+      font-size:.78rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--soft);
+      margin-bottom:7px;
+    }
+
+    .stat .value{
+      font-size:1.14rem;
+      line-height:1.5;
+      font-weight:700;
+      color:#fff7fa;
+    }
+
+    .thought-card{
+      max-width:700px;
+      margin:0 auto;
+      padding:22px 20px;
+      border-radius:26px;
+      background:rgba(255,255,255,.09);
+      border:1px solid var(--line);
+      text-align:center;
+      box-shadow:0 14px 28px rgba(39,4,16,.14);
+    }
+
+    .thought-card .mini{
+      font-family:"Segoe UI", system-ui, sans-serif;
+      font-size:.78rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--soft);
+      margin-bottom:12px;
+    }
+
+    .thought-card p{
+      margin:0;
+      font-size:1.08rem;
+      line-height:1.9;
+      color:#fff8fb;
+    }
+
+    .countdown-grid{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .count-box{
+      background:rgba(255,255,255,.09);
+      border:1px solid rgba(255,225,232,.16);
+      border-radius:22px;
+      padding:18px 10px;
+      text-align:center;
+    }
+
+    .count-box .num{
+      font-size:clamp(1.7rem, 5vw, 2.4rem);
+      color:var(--gold);
+      font-weight:700;
+      line-height:1;
+      margin-bottom:6px;
+    }
+
+    .count-box .lbl{
+      font-family:"Segoe UI", system-ui, sans-serif;
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:#fff3f6;
+    }
+
+    .countdown-note{
+      margin-top:16px;
+      text-align:center;
+      color:#fff6f8;
+      line-height:1.8;
+      font-size:1rem;
+    }
+
+    .miss-grid,.love-grid,.future-grid{
       display:grid;
       grid-template-columns:repeat(2, minmax(0,1fr));
       gap:14px;
@@ -271,19 +434,21 @@
     }
 
     .miss{
-      background:var(--card-strong);
-      border:1px solid rgba(255,225,232,.14);
-      border-radius:22px;
-      padding:18px 16px;
       line-height:1.7;
       font-size:1rem;
       color:#fff6f8;
     }
 
-    .miss strong{
+    .miss strong,.love-card strong,.future-card strong{
       color:var(--gold);
       display:block;
       margin-bottom:4px;
+    }
+
+    .love-card,.future-card{
+      color:#fff7fa;
+      line-height:1.75;
+      font-size:1rem;
     }
 
     .reveal-wrap{
@@ -445,6 +610,67 @@
       color:#fff7fa;
     }
 
+    @keyframes tinyShake{
+      0%,100%{transform:translateX(0)}
+      25%{transform:translateX(-5px)}
+      75%{transform:translateX(5px)}
+    }
+
+    .shake{animation:tinyShake .28s ease 2}
+
+    .secret-hearts{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      margin-top:18px;
+      flex-wrap:wrap;
+    }
+
+    .secret-heart{
+      width:42px;
+      height:42px;
+      display:grid;
+      place-items:center;
+      border-radius:50%;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,225,232,.14);
+      color:#ffd1dc;
+      cursor:pointer;
+      font-size:1rem;
+      transition:transform .2s ease, background .2s ease;
+    }
+
+    .secret-heart:hover{
+      transform:translateY(-2px) scale(1.04);
+      background:rgba(255,255,255,.12);
+    }
+
+    .toast{
+      position:fixed;
+      left:50%;
+      bottom:22px;
+      transform:translateX(-50%) translateY(24px);
+      opacity:0;
+      z-index:35;
+      background:rgba(63,7,23,.95);
+      color:#fff7fa;
+      border:1px solid rgba(255,225,232,.18);
+      box-shadow:0 18px 40px rgba(25,0,7,.28);
+      padding:13px 16px;
+      border-radius:16px;
+      max-width:min(92vw, 460px);
+      text-align:center;
+      line-height:1.6;
+      transition:opacity .35s ease, transform .35s ease;
+      pointer-events:none;
+      font-size:.98rem;
+    }
+
+    .toast.show{
+      opacity:1;
+      transform:translateX(-50%) translateY(0);
+    }
+
     .closing{
       text-align:center;
       max-width:680px;
@@ -456,6 +682,17 @@
 
     .closing strong{
       color:var(--gold);
+      display:inline-block;
+      animation:heartbeat 1.35s ease-in-out infinite;
+      transform-origin:center;
+    }
+
+    @keyframes heartbeat{
+      0%,100%{transform:scale(1)}
+      14%{transform:scale(1.08)}
+      28%{transform:scale(1)}
+      42%{transform:scale(1.08)}
+      70%{transform:scale(1)}
     }
 
     .sign{
@@ -473,34 +710,21 @@
       letter-spacing:.35em;
     }
 
-
-    .section{
-      opacity:0;
-      transform:translateY(26px);
-      transition:opacity .85s ease, transform .85s ease;
+    @media (max-width:720px){
+      body{padding:14px 12px 40px}
+      .hero,.section{border-radius:24px}
+      .hero-inner{padding:42px 20px 34px}
+      h1{font-size:clamp(3rem,15vw,5rem)}
+      .sub{font-size:1rem; line-height:1.75}
+      .section{padding:27px 17px}
+      .stats,.miss-grid,.love-grid,.future-grid,.countdown-grid{grid-template-columns:1fr}
+      .letter{font-size:1rem; line-height:1.82}
+      .stat,.miss,.love-card,.future-card,.count-box{border-radius:20px}
+      .call-card{border-radius:24px}
+      .call-actions{flex-direction:column}
+      .action{width:100%}
+      .float{font-size:18px !important}
     }
-
-    .section.visible{
-      opacity:1;
-      transform:translateY(0);
-    }
-
-    .hero{
-      animation:heroIn 1s ease both;
-    }
-
-    @keyframes heroIn{
-      from{opacity:0; transform:translateY(18px) scale(.985)}
-      to{opacity:1; transform:translateY(0) scale(1)}
-    }
-
-    @keyframes tinyShake{
-      0%,100%{transform:translateX(0)}
-      25%{transform:translateX(-5px)}
-      75%{transform:translateX(5px)}
-    }
-
-    .shake{animation:tinyShake .28s ease 2}
 
     @media (prefers-reduced-motion: reduce){
       html{scroll-behavior:auto}
@@ -509,27 +733,25 @@
         animation-iteration-count:1 !important;
         transition-duration:.01ms !important;
       }
-      .section{opacity:1;transform:none}
-    }
-
-    @media (max-width:720px){
-      body{padding:14px 12px 40px}
-      .hero,.section{border-radius:24px}
-      .hero-inner{padding:42px 20px 34px}
-      h1{font-size:clamp(3rem,15vw,5rem)}
-      .sub{font-size:1rem;line-height:1.75}
-      .section{padding:27px 17px}
-      .stats, .miss-grid{grid-template-columns:1fr}
-      .letter{font-size:1rem; line-height:1.82}
-      .stat,.miss{border-radius:20px}
-      .call-card{border-radius:24px}
-      .call-actions{flex-direction:column}
-      .action{width:100%}
-      .float{font-size:18px !important}
+      .section{opacity:1; transform:none}
     }
   </style>
 </head>
-<body>
+<body class="locked">
+  <div class="anniversary-banner" id="anniversaryBanner"></div>
+
+  <div class="entry-screen" id="entryScreen">
+    <div class="entry-card">
+      <div class="tiny">for Katieee only</div>
+      <h2>My Katieee ❤️</h2>
+      <p>
+        A small little corner of the internet made just for you.
+        Softly romantic, a little dramatic, and very, very you.
+      </p>
+      <button id="enterBtn" type="button">Enter ❤️</button>
+    </div>
+  </div>
+
   <div class="float heart1">❤️</div>
   <div class="float heart2">💖</div>
   <div class="float heart3">💕</div>
@@ -539,6 +761,8 @@
   <div class="float food2">🍫</div>
   <div class="float food3">🥭</div>
   <div class="float food4">🍜</div>
+
+  <div class="toast" id="toast"></div>
 
   <main class="wrap">
     <section class="hero">
@@ -592,6 +816,18 @@
     </section>
 
     <section class="section">
+      <h2>Today I thought of you because...</h2>
+      <div class="thought-card">
+        <div class="mini">today's thought</div>
+        <p>
+          every time I imagine your face suddenly appearing on my screen,
+          I still get that same ridiculous excitement. You somehow still
+          make my heart react before my brain does.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
       <h2>Our little milestones</h2>
 
       <div class="counter">
@@ -627,6 +863,38 @@
     </section>
 
     <section class="section">
+      <h2>Countdown to finally seeing you</h2>
+      <div class="counter">
+        <div class="count" id="countdownHeadline">waiting...</div>
+        <div class="text" id="countdownSubtext">until the date I finally get to see you</div>
+      </div>
+
+      <div class="countdown-grid" id="countdownGrid">
+        <div class="count-box">
+          <div class="num" id="meetDays">--</div>
+          <div class="lbl">Days</div>
+        </div>
+        <div class="count-box">
+          <div class="num" id="meetHours">--</div>
+          <div class="lbl">Hours</div>
+        </div>
+        <div class="count-box">
+          <div class="num" id="meetMinutes">--</div>
+          <div class="lbl">Minutes</div>
+        </div>
+        <div class="count-box">
+          <div class="num" id="meetSeconds">--</div>
+          <div class="lbl">Seconds</div>
+        </div>
+      </div>
+
+      <div class="countdown-note" id="countdownNote">
+        The second I know the date, this starts counting down properly.
+        Until then, just know I’m already waiting for you.
+      </div>
+    </section>
+
+    <section class="section">
       <h2>Things I never thought I'd miss</h2>
       <div class="miss-grid">
         <div class="miss">
@@ -652,6 +920,28 @@
         <div class="miss">
           <strong>The way you feel things deeply</strong>
           It makes your love, your care, and your presence feel real.
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Reasons I love you</h2>
+      <div class="love-grid">
+        <div class="love-card">
+          <strong>The way you care</strong>
+          You don’t love lightly. You feel deeply, and that makes everything with you feel real.
+        </div>
+        <div class="love-card">
+          <strong>Your softness and your fire</strong>
+          You can be gentle and dramatic, sweet and stubborn — and somehow all of it is lovable.
+        </div>
+        <div class="love-card">
+          <strong>The peace in our connection</strong>
+          Even when I miss you, there is something about you that still feels like comfort.
+        </div>
+        <div class="love-card">
+          <strong>The excitement you still give me</strong>
+          You still make my heart react like it hasn’t learned how to stay calm around you.
         </div>
       </div>
     </section>
@@ -696,17 +986,57 @@
     </section>
 
     <section class="section">
+      <h2>One day...</h2>
+      <div class="future-grid">
+        <div class="future-card">
+          <strong>One day</strong>
+          I won’t have to wait for your face to appear on a screen, because you’ll be right there beside me.
+        </div>
+        <div class="future-card">
+          <strong>One day</strong>
+          The excitement I feel before a video call will become the excitement of seeing you walk into the room.
+        </div>
+        <div class="future-card">
+          <strong>One day</strong>
+          Missing you won’t be the normal thing anymore — having you near me will.
+        </div>
+        <div class="future-card">
+          <strong>One day</strong>
+          I’ll still look at you like I do now, just from much, much closer.
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="closing">
         And out of everything that has happened between us so far,
         my favourite part is still this —
         <strong>I love you, my Katieee.</strong>
       </div>
+
+      <div class="secret-hearts">
+        <button class="secret-heart" data-message="Every tiny version of you matters to me.">♥</button>
+        <button class="secret-heart" data-message="Your face on video call still ruins my ability to act normal.">♥</button>
+        <button class="secret-heart" data-message="I really, really hope one day I get to love you from closer.">♥</button>
+      </div>
+
       <div class="sign">— Kevin</div>
       <div class="footer-hearts">💖 💗 💖</div>
     </section>
   </main>
 
   <script>
+    // Set this when you know the meeting date.
+    // Example: const NEXT_MEET_ISO = "2026-12-25T18:00:00+04:00";
+    const NEXT_MEET_ISO = "";
+
+    const entryScreen = document.getElementById('entryScreen');
+    const enterBtn = document.getElementById('enterBtn');
+    enterBtn.addEventListener('click', () => {
+      entryScreen.classList.add('hidden');
+      document.body.classList.remove('locked');
+    });
+
     (function(){
       const start = new Date('2026-08-10T00:00:00');
       const today = new Date();
@@ -714,6 +1044,70 @@
       const days = Math.max(0, Math.floor(diff / (1000 * 60 * 60 * 24)));
       document.getElementById('daysCount').textContent = days + (days === 1 ? ' day' : ' days');
     })();
+
+    function updateMeetCountdown(){
+      const headline = document.getElementById('countdownHeadline');
+      const note = document.getElementById('countdownNote');
+      const subtext = document.getElementById('countdownSubtext');
+
+      if(!NEXT_MEET_ISO){
+        headline.textContent = "waiting...";
+        subtext.textContent = "until the date I finally get to see you";
+        return;
+      }
+
+      const target = new Date(NEXT_MEET_ISO);
+      const now = new Date();
+      const diff = target - now;
+
+      if(diff <= 0){
+        headline.textContent = "it's time ❤️";
+        subtext.textContent = "the waiting is over";
+        document.getElementById('meetDays').textContent = "0";
+        document.getElementById('meetHours').textContent = "0";
+        document.getElementById('meetMinutes').textContent = "0";
+        document.getElementById('meetSeconds').textContent = "0";
+        note.textContent = "If this is today, then I hope I’m smiling like an idiot already.";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      headline.textContent = days + " day" + (days === 1 ? "" : "s");
+      subtext.textContent = "until I finally get to see you";
+      document.getElementById('meetDays').textContent = days;
+      document.getElementById('meetHours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('meetMinutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('meetSeconds').textContent = String(seconds).padStart(2, '0');
+      note.textContent = "Every second closer to you feels like a very good second.";
+    }
+
+    updateMeetCountdown();
+    setInterval(updateMeetCountdown, 1000);
+
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.12});
+    sections.forEach(section => observer.observe(section));
+
+    const foods = [...document.querySelectorAll('.food1,.food2,.food3,.food4')];
+    function showRandomFood(){
+      const food = foods[Math.floor(Math.random() * foods.length)];
+      food.classList.add('food-pop');
+      setTimeout(() => food.classList.remove('food-pop'), 2400);
+      const next = 4500 + Math.random() * 6000;
+      setTimeout(showRandomFood, next);
+    }
+    setTimeout(showRandomFood, 2200);
 
     const revealBtn = document.getElementById('revealBtn');
     const secretBox = document.getElementById('secretBox');
@@ -733,37 +1127,6 @@
         : 'Answer';
     });
 
-    const dots = document.getElementById('dots');
-    let state = 0;
-    setInterval(() => {
-      state = (state + 1) % 4;
-      dots.textContent = '.'.repeat(state || 3);
-    }, 450);
-
-    // Soft reveal as she scrolls.
-    const sections = document.querySelectorAll('.section');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    sections.forEach(section => observer.observe(section));
-
-    // Her favourite foods only pop up occasionally.
-    const foods = [...document.querySelectorAll('.food1,.food2,.food3,.food4')];
-    function showRandomFood(){
-      const food = foods[Math.floor(Math.random() * foods.length)];
-      food.classList.add('food-pop');
-      setTimeout(() => food.classList.remove('food-pop'), 2400);
-      const next = 4500 + Math.random() * 6000;
-      setTimeout(showRandomFood, next);
-    }
-    setTimeout(showRandomFood, 2200);
-
-    // There is only one correct answer to Katieee calling 😌
     const declineBtn = document.getElementById('declineBtn');
     declineBtn.addEventListener('click', () => {
       const card = declineBtn.closest('.call-card');
@@ -774,6 +1137,39 @@
       setTimeout(() => declineBtn.textContent = 'Decline', 1500);
     });
 
+    const dots = document.getElementById('dots');
+    let state = 0;
+    setInterval(() => {
+      state = (state + 1) % 4;
+      dots.textContent = '.'.repeat(state || 3);
+    }, 450);
+
+    const toast = document.getElementById('toast');
+    let toastTimer = null;
+    document.querySelectorAll('.secret-heart').forEach(btn => {
+      btn.addEventListener('click', () => {
+        toast.textContent = btn.dataset.message;
+        toast.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
+      });
+    });
+
+    (function(){
+      const now = new Date();
+      const today = String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+      const specialDays = {
+        '08-10': 'Happy first-call day ❤️',
+        '09-16': 'Happy first-video-call day ❤️',
+        '10-02': 'Happy first “I love you” day ❤️',
+        '10-05': 'Happy first kiss-emoji day ❤️'
+      };
+      if(specialDays[today]){
+        const banner = document.getElementById('anniversaryBanner');
+        banner.textContent = specialDays[today];
+        banner.classList.add('show');
+      }
+    })();
   </script>
 </body>
 </html>
