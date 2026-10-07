@@ -385,47 +385,7 @@
       line-height:1.9;
       color:#fff8fb;
     }
-
-    .countdown-grid{
-      display:grid;
-      grid-template-columns:repeat(4, minmax(0,1fr));
-      gap:12px;
-      margin-top:14px;
-    }
-
-    .count-box{
-      background:rgba(255,255,255,.09);
-      border:1px solid rgba(255,225,232,.16);
-      border-radius:22px;
-      padding:18px 10px;
-      text-align:center;
-    }
-
-    .count-box .num{
-      font-size:clamp(1.7rem, 5vw, 2.4rem);
-      color:var(--gold);
-      font-weight:700;
-      line-height:1;
-      margin-bottom:6px;
-    }
-
-    .count-box .lbl{
-      font-family:"Segoe UI", system-ui, sans-serif;
-      font-size:.78rem;
-      text-transform:uppercase;
-      letter-spacing:.12em;
-      color:#fff3f6;
-    }
-
-    .countdown-note{
-      margin-top:16px;
-      text-align:center;
-      color:#fff6f8;
-      line-height:1.8;
-      font-size:1rem;
-    }
-
-    .miss-grid,.love-grid,.future-grid{
+.miss-grid,.love-grid,.future-grid{
       display:grid;
       grid-template-columns:repeat(2, minmax(0,1fr));
       gap:14px;
@@ -717,7 +677,7 @@
       h1{font-size:clamp(3rem,15vw,5rem)}
       .sub{font-size:1rem; line-height:1.75}
       .section{padding:27px 17px}
-      .stats,.miss-grid,.love-grid,.future-grid,.countdown-grid{grid-template-columns:1fr}
+      .stats,.miss-grid,.love-grid,.future-grid{grid-template-columns:1fr}
       .letter{font-size:1rem; line-height:1.82}
       .stat,.miss,.love-card,.future-card,.count-box{border-radius:20px}
       .call-card{border-radius:24px}
@@ -814,20 +774,7 @@
         </p>
       </div>
     </section>
-
-    <section class="section">
-      <h2>Today I thought of you because...</h2>
-      <div class="thought-card">
-        <div class="mini">today's thought</div>
-        <p>
-          every time I imagine your face suddenly appearing on my screen,
-          I still get that same ridiculous excitement. You somehow still
-          make my heart react before my brain does.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
+<section class="section">
       <h2>Our little milestones</h2>
 
       <div class="counter">
@@ -861,40 +808,28 @@
         </div>
       </div>
     </section>
-
     <section class="section">
-      <h2>Countdown to finally seeing you</h2>
-      <div class="counter">
-        <div class="count" id="countdownHeadline">waiting...</div>
-        <div class="text" id="countdownSubtext">until the date I finally get to see you</div>
-      </div>
-
-      <div class="countdown-grid" id="countdownGrid">
-        <div class="count-box">
-          <div class="num" id="meetDays">--</div>
-          <div class="lbl">Days</div>
-        </div>
-        <div class="count-box">
-          <div class="num" id="meetHours">--</div>
-          <div class="lbl">Hours</div>
-        </div>
-        <div class="count-box">
-          <div class="num" id="meetMinutes">--</div>
-          <div class="lbl">Minutes</div>
-        </div>
-        <div class="count-box">
-          <div class="num" id="meetSeconds">--</div>
-          <div class="lbl">Seconds</div>
-        </div>
-      </div>
-
-      <div class="countdown-note" id="countdownNote">
-        The second I know the date, this starts counting down properly.
-        Until then, just know I’m already waiting for you.
+      <h2>Can’t wait to see you IRL ❤️</h2>
+      <div class="letter">
+        <p>
+          I love our calls, our messages, and all the little pieces of you I get through a screen.
+          But I honestly can’t wait for the day I get to see you in real life.
+        </p>
+        <p>
+          No loading screen. No camera turning on. No distance between us.
+          Just you, right there in front of me.
+        </p>
+        <p>
+          I already know I’m going to be ridiculously excited, probably smiling like an idiot,
+          trying to act normal and completely failing at it.
+        </p>
+        <p>
+          And I think that first real moment — actually seeing you, hearing you, standing next to you —
+          is going to stay with me for a very, very long time.
+        </p>
       </div>
     </section>
-
-    <section class="section">
+<section class="section">
       <h2>Things I never thought I'd miss</h2>
       <div class="miss-grid">
         <div class="miss">
@@ -1026,11 +961,7 @@
   </main>
 
   <script>
-    // Set this when you know the meeting date.
-    // Example: const NEXT_MEET_ISO = "2026-12-25T18:00:00+04:00";
-    const NEXT_MEET_ISO = "";
-
-    const entryScreen = document.getElementById('entryScreen');
+const entryScreen = document.getElementById('entryScreen');
     const enterBtn = document.getElementById('enterBtn');
     enterBtn.addEventListener('click', () => {
       entryScreen.classList.add('hidden');
@@ -1044,51 +975,7 @@
       const days = Math.max(0, Math.floor(diff / (1000 * 60 * 60 * 24)));
       document.getElementById('daysCount').textContent = days + (days === 1 ? ' day' : ' days');
     })();
-
-    function updateMeetCountdown(){
-      const headline = document.getElementById('countdownHeadline');
-      const note = document.getElementById('countdownNote');
-      const subtext = document.getElementById('countdownSubtext');
-
-      if(!NEXT_MEET_ISO){
-        headline.textContent = "waiting...";
-        subtext.textContent = "until the date I finally get to see you";
-        return;
-      }
-
-      const target = new Date(NEXT_MEET_ISO);
-      const now = new Date();
-      const diff = target - now;
-
-      if(diff <= 0){
-        headline.textContent = "it's time ❤️";
-        subtext.textContent = "the waiting is over";
-        document.getElementById('meetDays').textContent = "0";
-        document.getElementById('meetHours').textContent = "0";
-        document.getElementById('meetMinutes').textContent = "0";
-        document.getElementById('meetSeconds').textContent = "0";
-        note.textContent = "If this is today, then I hope I’m smiling like an idiot already.";
-        return;
-      }
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
-      const seconds = Math.floor((diff / 1000) % 60);
-
-      headline.textContent = days + " day" + (days === 1 ? "" : "s");
-      subtext.textContent = "until I finally get to see you";
-      document.getElementById('meetDays').textContent = days;
-      document.getElementById('meetHours').textContent = String(hours).padStart(2, '0');
-      document.getElementById('meetMinutes').textContent = String(minutes).padStart(2, '0');
-      document.getElementById('meetSeconds').textContent = String(seconds).padStart(2, '0');
-      note.textContent = "Every second closer to you feels like a very good second.";
-    }
-
-    updateMeetCountdown();
-    setInterval(updateMeetCountdown, 1000);
-
-    const sections = document.querySelectorAll('.section');
+const sections = document.querySelectorAll('.section');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if(entry.isIntersecting){
