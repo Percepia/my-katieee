@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#8f1f3a" />
+  <title>My Katieee ❤️</title>
+
+  <style>
+    :root{
+      --bg1:#4d0719;
+      --bg2:#7d1531;
+      --bg3:#b0284b;
+      --card:rgba(255,240,244,.11);
+      --card-strong:rgba(255,240,244,.16);
+      --line:rgba(255,220,228,.18);
+      --text:#fff7fa;
+      --soft:#ffd7e2;
+      --accent:#ffb8c9;
+      --gold:#ffd7a8;
+      --heart:#ff7aa2;
+      --shadow:rgba(39,4,16,.28);
+    }
+
+    *{box-sizing:border-box}
+
+    html,body{
+      margin:0;
+      min-height:100%;
+      font-family: Georgia, "Times New Roman", serif;
+      color:var(--text);
+      scroll-behavior:smooth;
+    }
+
+    body{
+      min-height:100vh;
+      background:
+        radial-gradient(circle at 18% 10%, rgba(255,255,255,.08), transparent 24%),
+        radial-gradient(circle at 80% 18%, rgba(255,180,200,.08), transparent 20%),
+        radial-gradient(circle at 50% 100%, rgba(255,255,255,.04), transparent 34%),
+        linear-gradient(145deg, var(--bg1) 0%, var(--bg2) 42%, var(--bg3) 100%);
+      display:flex;
+      justify-content:center;
+      padding:28px 16px 54px;
+      overflow-x:hidden;
+      position:relative;
+    }
+
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size:22px 22px;
+      opacity:.16;
+      pointer-events:none;
+    }
+
+    .float{
+      position:fixed;
+      z-index:0;
+      opacity:.24;
+      pointer-events:none;
+      filter:drop-shadow(0 8px 14px rgba(0,0,0,.15));
+      animation:drift 10s ease-in-out infinite;
+      user-select:none;
+    }
+
+    .heart1{left:6%; top:12%; font-size:24px}
+    .heart2{right:8%; top:18%; font-size:22px; animation-delay:-2s}
+    .heart3{left:12%; bottom:18%; font-size:18px; animation-delay:-4s}
+    .heart4{right:10%; bottom:10%; font-size:26px; animation-delay:-6s}
+    .food1{left:13%; top:42%; font-size:24px; animation-delay:-1s}
+    .food2{right:13%; top:54%; font-size:22px; animation-delay:-5s}
+    .food3{left:16%; bottom:30%; font-size:20px; animation-delay:-7s}
+    .food4{right:17%; bottom:34%; font-size:24px; animation-delay:-3s}
+
+    @keyframes drift{
+      0%,100%{transform:translateY(0) rotate(-6deg) scale(1)}
+      50%{transform:translateY(-14px) rotate(6deg) scale(1.04)}
+    }
+
+    .wrap{
+      width:min(900px, 100%);
+      position:relative;
+      z-index:1;
+    }
+
+    .hero, .section{
+      background:linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.05));
+      border:1px solid var(--line);
+      border-radius:32px;
+      box-shadow:0 28px 72px var(--shadow);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+    }
+
+    .hero{
+      overflow:hidden;
+    }
+
+    .hero-inner{
+      padding:58px 34px 46px;
+      text-align:center;
+    }
+
+    .tag{
+      font-family:"Segoe UI", system-ui, sans-serif;
+      text-transform:uppercase;
+      letter-spacing:.24em;
+      font-size:.76rem;
+      color:var(--soft);
+      opacity:.95;
+      margin-bottom:12px;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(3.4rem, 10vw, 6.5rem);
+      line-height:.92;
+      letter-spacing:-.05em;
+      font-weight:600;
+      color:#fff7fa;
+      text-shadow:0 8px 28px rgba(60,4,22,.22);
+    }
+
+    .sub{
+      max-width:670px;
+      margin:18px auto 0;
+      font-size:clamp(1.06rem, 3vw, 1.26rem);
+      line-height:1.9;
+      color:#fff4f7;
+    }
+
+    .little-hearts{
+      margin-top:18px;
+      font-size:1.08rem;
+      letter-spacing:.42em;
+      color:var(--accent);
+    }
+
+    .section{
+      margin-top:20px;
+      padding:34px 24px;
+    }
+
+    .section h2{
+      margin:0 0 20px;
+      text-align:center;
+      font-size:clamp(1.7rem, 5vw, 2.35rem);
+      color:#fff7fa;
+      font-weight:600;
+    }
+
+    .letter{
+      max-width:720px;
+      margin:0 auto;
+      font-size:1.08rem;
+      line-height:1.95;
+      color:#fff7fa;
+    }
+
+    .letter p{
+      margin:0 0 18px;
+    }
+
+    .highlight{
+      color:var(--gold);
+      font-weight:700;
+    }
+
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:16px;
+      margin-top:8px;
+    }
+
+    .stat{
+      background:var(--card-strong);
+      border:1px solid rgba(255,225,232,.18);
+      border-radius:24px;
+      padding:18px 16px;
+      text-align:center;
+      box-shadow:0 10px 24px rgba(39,4,16,.12);
+    }
+
+    .stat .emoji{
+      font-size:1.35rem;
+      display:block;
+      margin-bottom:8px;
+    }
+
+    .stat .label{
+      font-family:"Segoe UI", system-ui, sans-serif;
+      font-size:.78rem;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color:var(--soft);
+      margin-bottom:7px;
+    }
+
+    .stat .value{
+      font-size:1.14rem;
+      line-height:1.5;
+      font-weight:700;
+      color:#fff7fa;
+    }
+
+    .counter{
+      margin:0 auto 22px;
+      max-width:520px;
+      text-align:center;
+      padding:18px 18px 16px;
+      background:rgba(255,255,255,.09);
+      border:1px solid var(--line);
+      border-radius:24px;
+    }
+
+    .counter .count{
+      font-size:clamp(2rem, 7vw, 3.1rem);
+      font-weight:700;
+      color:var(--gold);
+      line-height:1;
+      margin-bottom:8px;
+    }
+
+    .counter .text{
+      font-family:"Segoe UI", system-ui, sans-serif;
+      font-size:.92rem;
+      letter-spacing:.06em;
+      color:#fff2f5;
+      text-transform:uppercase;
+    }
+
+    .miss-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0,1fr));
+      gap:14px;
+      max-width:760px;
+      margin:0 auto;
+    }
+
+    .miss{
+      background:var(--card-strong);
+      border:1px solid rgba(255,225,232,.14);
+      border-radius:22px;
+      padding:18px 16px;
+      line-height:1.7;
+      font-size:1rem;
+      color:#fff6f8;
+    }
+
+    .miss strong{
+      color:var(--gold);
+      display:block;
+      margin-bottom:4px;
+    }
+
+    .reveal-wrap{
+      text-align:center;
+      max-width:680px;
+      margin:0 auto;
+    }
+
+    .reveal-wrap p{
+      margin:0 0 20px;
+      font-size:1.06rem;
+      line-height:1.85;
+      color:#fff7fa;
+    }
+
+    button{
+      border:0;
+      background:linear-gradient(135deg, #ff84aa, #ff6f98);
+      color:#fff;
+      padding:14px 22px;
+      border-radius:999px;
+      font:inherit;
+      font-weight:700;
+      cursor:pointer;
+      box-shadow:0 14px 28px rgba(61,4,23,.2);
+      transition:.2s ease;
+    }
+
+    button:hover{transform:translateY(-2px)}
+    button:active{transform:translateY(0)}
+
+    .secret{
+      max-height:0;
+      opacity:0;
+      overflow:hidden;
+      transition:max-height .6s ease, opacity .6s ease, margin .6s ease, padding .6s ease;
+      margin:0 auto;
+      max-width:620px;
+      background:rgba(255,255,255,.08);
+      border:1px solid transparent;
+      border-radius:22px;
+    }
+
+    .secret.show{
+      max-height:260px;
+      opacity:1;
+      margin-top:18px;
+      padding:18px 18px;
+      border-color:var(--line);
+    }
+
+    .secret p{
+      margin:0;
+      font-size:1.06rem;
+      line-height:1.85;
+      color:#fff6f9;
+    }
+
+    .call-card{
+      max-width:460px;
+      margin:0 auto;
+      background:rgba(255,255,255,.09);
+      border:1px solid var(--line);
+      border-radius:30px;
+      padding:26px 20px 20px;
+      text-align:center;
+      box-shadow:0 18px 32px rgba(39,4,16,.16);
+    }
+
+    .call-avatar{
+      width:94px;
+      height:94px;
+      margin:0 auto 14px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, rgba(255,255,255,.16), rgba(255,255,255,.06));
+      border:1px solid rgba(255,230,236,.2);
+      box-shadow:0 0 0 10px rgba(255,255,255,.04);
+      font-size:2rem;
+      animation:pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse{
+      0%,100%{transform:scale(1); box-shadow:0 0 0 10px rgba(255,255,255,.04)}
+      50%{transform:scale(1.04); box-shadow:0 0 0 18px rgba(255,255,255,.03)}
+    }
+
+    .call-name{
+      font-size:1.7rem;
+      font-weight:700;
+      color:#fff8fb;
+    }
+
+    .call-status{
+      margin-top:6px;
+      color:var(--soft);
+      font-family:"Segoe UI", system-ui, sans-serif;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-size:.82rem;
+    }
+
+    .dots{
+      display:inline-block;
+      min-width:20px;
+      text-align:left;
+    }
+
+    .call-actions{
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .action{
+      padding:13px 20px;
+      border-radius:999px;
+      font-family:"Segoe UI", system-ui, sans-serif;
+      font-weight:700;
+      border:0;
+      cursor:pointer;
+    }
+
+    .decline{
+      background:#c13b5a;
+      color:white;
+    }
+
+    .answer{
+      background:#ffd1dc;
+      color:#6d102a;
+    }
+
+    .call-message{
+      max-height:0;
+      overflow:hidden;
+      opacity:0;
+      transition:max-height .65s ease, opacity .65s ease, margin .65s ease, padding .65s ease;
+      margin-top:0;
+      text-align:left;
+      background:rgba(255,255,255,.08);
+      border-radius:22px;
+      border:1px solid transparent;
+    }
+
+    .call-message.show{
+      max-height:360px;
+      opacity:1;
+      margin-top:18px;
+      padding:18px 18px;
+      border-color:var(--line);
+    }
+
+    .call-message p{
+      margin:0;
+      line-height:1.9;
+      color:#fff7fa;
+    }
+
+    .closing{
+      text-align:center;
+      max-width:680px;
+      margin:0 auto;
+      font-size:clamp(1.2rem, 3.6vw, 1.55rem);
+      line-height:1.7;
+      color:#fff8fb;
+    }
+
+    .closing strong{
+      color:var(--gold);
+    }
+
+    .sign{
+      text-align:center;
+      margin-top:20px;
+      font-style:italic;
+      font-size:1.2rem;
+      color:#ffd8e1;
+    }
+
+    .footer-hearts{
+      text-align:center;
+      margin-top:16px;
+      color:var(--accent);
+      letter-spacing:.35em;
+    }
+
+    @media (max-width:720px){
+      .hero-inner{padding:44px 22px 36px}
+      .section{padding:28px 18px}
+      .stats, .miss-grid{grid-template-columns:1fr}
+      .letter{font-size:1rem; line-height:1.85}
+      .call-actions{flex-direction:column}
+      .action{width:100%}
+    }
+  </style>
+</head>
+<body>
+  <div class="float heart1">❤️</div>
+  <div class="float heart2">💖</div>
+  <div class="float heart3">💕</div>
+  <div class="float heart4">💘</div>
+
+  <div class="float food1">🧇</div>
+  <div class="float food2">🍫</div>
+  <div class="float food3">🥭</div>
+  <div class="float food4">🍜</div>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="tag">for my girl</div>
+        <h1>My Katieee ❤️</h1>
+        <p class="sub">
+          Somewhere between all our random conversations, stupid jokes, long calls
+          and little moments, you quietly became someone very special to me.
+        </p>
+        <div class="little-hearts">❤ ❤ ❤</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>A little note for you</h2>
+      <div class="letter">
+        <p>
+          I love the way you care, the way you feel deeply, and the way you make
+          even ordinary moments feel warm and special.
+        </p>
+        <p>
+          I love your softness, your stubbornness, your sweetness, your little
+          dramatic moments, and all the tiny things that make you
+          <span class="highlight">my Katieee</span>.
+        </p>
+        <p>
+          You somehow made random days feel nicer, long distances feel smaller,
+          and my heart feel fuller.
+        </p>
+        <p>
+          And every single time you turn your camera on and I see your face,
+          I genuinely get <span class="highlight">soooooooo excited</span>.
+          It sounds like such a small thing, but it never feels small to me.
+          For those few seconds, everything else fades away. I just see you,
+          and somehow my whole mood changes.
+        </p>
+        <p>
+          There is something about seeing your smile, your expressions, and hearing
+          your voice while looking at you that makes the distance feel almost unreal.
+          I still get that little rush every time, like my heart still has no idea
+          how to act normal around you.
+        </p>
+        <p>
+          Maybe one day seeing your face will become part of my everyday life.
+          Maybe it will be the first face I see in the morning and the one I come
+          home to at the end of the day. But until then, every video call feels
+          like a tiny piece of you I get to keep.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Our little milestones</h2>
+
+      <div class="counter">
+        <div class="count" id="daysCount">0 days</div>
+        <div class="text">since our first call on 10 Aug 2026</div>
+      </div>
+
+      <div class="stats">
+        <div class="stat">
+          <span class="emoji">📞</span>
+          <div class="label">First Call</div>
+          <div class="value">10 Aug 2026</div>
+        </div>
+
+        <div class="stat">
+          <span class="emoji">🎥</span>
+          <div class="label">First Video Call</div>
+          <div class="value">16 Sept 2026</div>
+        </div>
+
+        <div class="stat">
+          <span class="emoji">❤️</span>
+          <div class="label">First “I love you”</div>
+          <div class="value">2 Oct 2026</div>
+        </div>
+
+        <div class="stat">
+          <span class="emoji">😘</span>
+          <div class="label">First Kiss Emoji</div>
+          <div class="value">5 Oct 2026</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Things I never thought I'd miss</h2>
+      <div class="miss-grid">
+        <div class="miss">
+          <strong>Your face on video call</strong>
+          That tiny moment when your camera turns on and suddenly my whole mood changes.
+        </div>
+        <div class="miss">
+          <strong>Your expressions</strong>
+          The way your face says things even before your words do.
+        </div>
+        <div class="miss">
+          <strong>Your voice</strong>
+          Especially when I'm tired, your voice somehow feels like comfort.
+        </div>
+        <div class="miss">
+          <strong>Your random messages</strong>
+          Even the small ones somehow feel important because they came from you.
+        </div>
+        <div class="miss">
+          <strong>Your dramatic little moments</strong>
+          The ones that make me smile even when I pretend not to.
+        </div>
+        <div class="miss">
+          <strong>The way you feel things deeply</strong>
+          It makes your love, your care, and your presence feel real.
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>One thing I want to tell you</h2>
+      <div class="reveal-wrap">
+        <p>
+          There is one thought that keeps coming back to me,
+          quietly, again and again.
+        </p>
+        <button id="revealBtn">tap to reveal it ❤️</button>
+        <div class="secret" id="secretBox">
+          <p>
+            I hope one day I don't have to wait for a video call to see your face.
+            I hope one day seeing you is just part of my everyday life — normal to
+            everyone else, but still the most beautiful part of my day to me.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Incoming call</h2>
+      <div class="call-card">
+        <div class="call-avatar">❤️</div>
+        <div class="call-name">Katieee</div>
+        <div class="call-status">incoming video call<span class="dots" id="dots">...</span></div>
+        <div class="call-actions">
+          <button class="action decline" type="button">Decline</button>
+          <button class="action answer" id="answerBtn" type="button">Answer</button>
+        </div>
+        <div class="call-message" id="callMessage">
+          <p>
+            If this were real, I already know how I'd feel — excited, smiling for no
+            reason, and pretending to be calm even though my heart would already be
+            racing. Because somehow, no matter how many times it happens, seeing you
+            still feels special to me every single time.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="closing">
+        And out of everything that has happened between us so far,
+        my favourite part is still this —
+        <strong>I love you, my Katieee.</strong>
+      </div>
+      <div class="sign">— Kevin</div>
+      <div class="footer-hearts">💖 💗 💖</div>
+    </section>
+  </main>
+
+  <script>
+    (function(){
+      const start = new Date('2026-08-10T00:00:00');
+      const today = new Date();
+      const diff = today - start;
+      const days = Math.max(0, Math.floor(diff / (1000 * 60 * 60 * 24)));
+      document.getElementById('daysCount').textContent = days + (days === 1 ? ' day' : ' days');
+    })();
+
+    const revealBtn = document.getElementById('revealBtn');
+    const secretBox = document.getElementById('secretBox');
+    revealBtn.addEventListener('click', () => {
+      secretBox.classList.toggle('show');
+      revealBtn.textContent = secretBox.classList.contains('show')
+        ? 'okay... now you know ❤️'
+        : 'tap to reveal it ❤️';
+    });
+
+    const answerBtn = document.getElementById('answerBtn');
+    const callMessage = document.getElementById('callMessage');
+    answerBtn.addEventListener('click', () => {
+      callMessage.classList.toggle('show');
+      answerBtn.textContent = callMessage.classList.contains('show')
+        ? 'You answered ❤️'
+        : 'Answer';
+    });
+
+    const dots = document.getElementById('dots');
+    let state = 0;
+    setInterval(() => {
+      state = (state + 1) % 4;
+      dots.textContent = '.'.repeat(state || 3);
+    }, 450);
+  </script>
+</body>
+</html>
