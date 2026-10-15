@@ -209,7 +209,7 @@ h1{
 
 <main>
 <section class="hero">
-  <div class="small">24 hours after losing you</div>
+  <div class="small" id="hoursSince">24 hours after losing you</div>
   <h1>I miss you.</h1>
   <div class="heart">♥</div>
 </section>
@@ -293,5 +293,23 @@ h1{
   Just the one thing I needed you to know.
 </div>
 </main>
+
+<script>
+  // Breakup time: 13 Oct 2026, 6:44 PM UAE time (UTC+4)
+  const breakupTime = new Date('2026-10-13T12:06:00+04:00');
+
+  function updateHoursSince() {
+    const now = new Date();
+    const diffMs = Math.max(0, now - breakupTime);
+    const hours = Math.floor(diffMs / (1000 * 60 * 60));
+
+    document.getElementById('hoursSince').textContent =
+      hours + (hours === 1 ? ' hour after losing you' : ' hours after losing you');
+  }
+
+  updateHoursSince();
+  setInterval(updateHoursSince, 60000);
+</script>
+
 </body>
 </html>
