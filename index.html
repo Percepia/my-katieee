@@ -696,6 +696,51 @@
       .section{opacity:1; transform:none}
     }
   
+
+.breakup-chapter{
+  margin-top:24px;
+  padding:0;
+  overflow:hidden;
+}
+.breakup-chapter a{
+  display:block;
+  text-decoration:none;
+  color:inherit;
+  padding:34px 28px;
+  text-align:center;
+}
+.breakup-chapter .chapter-kicker{
+  font-family:"Segoe UI",system-ui,sans-serif;
+  font-size:.72rem;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--soft);
+  opacity:.82;
+}
+.breakup-chapter h2{
+  margin:10px 0 8px;
+  font-size:clamp(2rem,6vw,3rem);
+  line-height:1.05;
+  color:var(--text);
+}
+.breakup-chapter p{
+  margin:0;
+  font-family:"Segoe UI",system-ui,sans-serif;
+  font-size:.98rem;
+  line-height:1.7;
+  color:var(--soft);
+}
+.breakup-chapter .arrow{
+  display:inline-block;
+  margin-top:16px;
+  font-family:"Segoe UI",system-ui,sans-serif;
+  font-size:.82rem;
+  font-weight:700;
+  color:#fff;
+  opacity:.9;
+}
+
 /* Two-chapter navigation */
 .story-nav{
   position:fixed;
@@ -996,6 +1041,16 @@
       <div class="sign">— Kevin</div>
       <div class="footer-hearts">💖 💗 💖</div>
     </section>
+
+    <section class="section breakup-chapter">
+      <a href="breakup.html">
+        <div class="chapter-kicker">one very unnecessary chapter</div>
+        <h2>A Stupid Decision 😭</h2>
+        <p>We lasted 46 hours apart. Never doing that again. ❤️</p>
+        <span class="arrow">Read this chapter →</span>
+      </a>
+    </section>
+
   </main>
 
   <script>
@@ -1096,27 +1151,6 @@ const sections = document.querySelectorAll('.section');
       }
     })();
   </script>
-
-<section style="width:min(900px,calc(100% - 32px));margin:34px auto 70px;text-align:center;">
-  <a href="breakup.html" style="
-    display:block;text-decoration:none;color:inherit;
-    padding:28px 22px;border-radius:24px;
-    border:1px solid rgba(255,220,228,.18);
-    background:rgba(255,240,244,.08);
-    box-shadow:0 16px 45px rgba(0,0,0,.15);">
-    <div style="font:700 .72rem/1.4 system-ui,-apple-system,'Segoe UI',sans-serif;
-                letter-spacing:.18em;text-transform:uppercase;color:#ffd7e2;opacity:.8;">
-      one very unnecessary chapter
-    </div>
-    <div style="font:400 clamp(1.7rem,5vw,2.7rem)/1.15 Georgia,serif;margin-top:8px;color:#fff7fa;">
-      A Stupid Decision
-    </div>
-    <div style="font:400 1rem/1.7 system-ui,-apple-system,'Segoe UI',sans-serif;
-                margin-top:10px;color:#ffd7e2;">
-      We lasted 46 hours apart. Never doing that again. ❤️
-    </div>
-  </a>
-</section>
 
 </body>
 </html>
