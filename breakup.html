@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#110307">
+<title>A Stupid Decision ❤️</title>
+<link rel="canonical" href="https://katieee.com/">
+<meta name="description" content="If you ever see this, there is something I need you to know.">
+
+<style>
+:root{
+  --bg:#0d0205;
+  --bg2:#22060d;
+  --text:#fff5f7;
+  --soft:#d8bbc2;
+  --pink:#ffc2cf;
+  --red:#b72b49;
+  --line:rgba(255,255,255,.10);
+}
+
+*{box-sizing:border-box}
+
+html,body{
+  margin:0;
+  min-height:100%;
+  font-family:Georgia,"Times New Roman",serif;
+  color:var(--text);
+}
+
+body{
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(183,43,73,.20),transparent 32%),
+    linear-gradient(180deg,var(--bg),var(--bg2));
+  overflow-x:hidden;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.18;
+  background-image:radial-gradient(rgba(255,255,255,.08) .7px,transparent .7px);
+  background-size:5px 5px;
+}
+
+.glow{
+  position:fixed;
+  width:38rem;
+  height:38rem;
+  max-width:90vw;
+  max-height:90vw;
+  left:50%;
+  top:12%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:rgba(183,43,73,.10);
+  filter:blur(90px);
+  pointer-events:none;
+  animation:breathe 7s ease-in-out infinite;
+}
+
+@keyframes breathe{
+  0%,100%{opacity:.45;transform:translate(-50%,-50%) scale(.94)}
+  50%{opacity:.9;transform:translate(-50%,-50%) scale(1.06)}
+}
+
+main{
+  width:min(750px,calc(100% - 34px));
+  margin:auto;
+  padding:11vh 0 80px;
+  position:relative;
+  z-index:1;
+}
+
+.hero{
+  min-height:50vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.small{
+  font-family:"Segoe UI",system-ui,sans-serif;
+  font-size:.72rem;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:var(--soft);
+  opacity:.7;
+  margin-bottom:22px;
+}
+
+h1{
+  margin:0;
+  max-width:700px;
+  font-size:clamp(4rem,14vw,8.3rem);
+  line-height:.9;
+  letter-spacing:-.055em;
+  font-weight:400;
+  color:#fff8fa;
+}
+
+.heart{
+  margin-top:26px;
+  font-size:1.8rem;
+  color:var(--red);
+  animation:beat 1.6s ease-in-out infinite;
+}
+
+@keyframes beat{
+  0%,100%{transform:scale(1)}
+  16%{transform:scale(1.14)}
+  32%{transform:scale(1)}
+  48%{transform:scale(1.11)}
+}
+
+.message{
+  margin-top:25px;
+  padding:52px 42px;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+
+.message p{
+  margin:0 0 26px;
+  font-size:clamp(1.1rem,3vw,1.3rem);
+  line-height:1.92;
+  color:#f1e6e9;
+}
+
+.message .lead{
+  font-size:clamp(1.3rem,3.7vw,1.65rem);
+  line-height:1.72;
+  color:#fff8fa;
+}
+
+.highlight{
+  color:var(--pink);
+  font-style:italic;
+}
+
+.direct{
+  margin:38px 0;
+  padding:30px 28px;
+  background:rgba(255,255,255,.035);
+  border:1px solid var(--line);
+  border-left:3px solid var(--red);
+  border-radius:0 18px 18px 0;
+}
+
+.direct p{
+  margin:0;
+  font-size:clamp(1.3rem,3.8vw,1.7rem);
+  line-height:1.72;
+  color:#fff8fa;
+}
+
+.divider{
+  width:58px;
+  height:1px;
+  margin:40px 0;
+  background:linear-gradient(90deg,var(--red),transparent);
+}
+
+.forever{
+  font-size:clamp(1.45rem,4.2vw,1.9rem)!important;
+  color:#fff!important;
+  line-height:1.62!important;
+}
+
+.signature{
+  margin-top:42px;
+  font-size:1.4rem;
+  font-style:italic;
+  color:var(--pink);
+}
+
+.footer{
+  margin:64px auto 0;
+  text-align:center;
+  max-width:520px;
+  font-family:"Segoe UI",system-ui,sans-serif;
+  font-size:.78rem;
+  line-height:1.8;
+  letter-spacing:.04em;
+  color:rgba(255,255,255,.38);
+}
+
+@media(max-width:600px){
+  main{padding-top:8vh}
+  .hero{min-height:42vh}
+  .message{padding:40px 6px}
+  .direct{padding:25px 20px}
+  .message p{line-height:1.82}
+}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important}
+}
+
+.taj{
+  margin-top:72px;
+  padding:54px 42px 20px;
+  border-top:1px solid var(--line);
+  text-align:center;
+}
+
+.taj .kicker{
+  font-family:"Segoe UI",system-ui,sans-serif;
+  font-size:.72rem;
+  text-transform:uppercase;
+  letter-spacing:.24em;
+  color:var(--soft);
+  opacity:.7;
+  margin-bottom:18px;
+}
+
+.taj h2{
+  margin:0 0 30px;
+  font-weight:400;
+  font-size:clamp(2.4rem,7vw,4rem);
+  color:#fff8fa;
+  letter-spacing:-.035em;
+}
+
+.taj-copy{
+  max-width:650px;
+  margin:0 auto 42px;
+}
+
+.taj-copy p{
+  margin:0 0 24px;
+  font-size:clamp(1.08rem,3vw,1.28rem);
+  line-height:1.9;
+  color:#f1e6e9;
+}
+
+.taj-copy .big{
+  font-size:clamp(1.3rem,3.8vw,1.68rem);
+  line-height:1.72;
+  color:#fff8fa;
+}
+
+.taj-copy .site-name{
+  color:var(--pink);
+  font-style:italic;
+}
+
+.memory-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+  margin-top:34px;
+}
+
+.memory-card{
+  margin:0;
+  overflow:hidden;
+  border-radius:22px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.025);
+  box-shadow:0 18px 60px rgba(0,0,0,.22);
+}
+
+.memory-card img{
+  width:100%;
+  display:block;
+  height:auto;
+}
+
+.memory-card figcaption{
+  padding:14px 18px 16px;
+  font-family:"Segoe UI",system-ui,sans-serif;
+  font-size:.77rem;
+  line-height:1.55;
+  color:rgba(255,255,255,.48);
+}
+
+.taj-signoff{
+  margin:42px 0 0;
+  font-size:clamp(1.25rem,3.7vw,1.6rem);
+  line-height:1.65;
+  color:#fff8fa;
+}
+
+@media(max-width:600px){
+  .taj{padding:46px 6px 10px}
+  .memory-card{border-radius:16px}
+}
+
+
+.story-nav{
+  position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:9999;
+  display:flex;gap:8px;padding:7px;border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;background:rgba(13,2,5,.72);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 12px 34px rgba(0,0,0,.28);
+}
+.story-nav a{
+  text-decoration:none;color:#f5dce2;
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:.75rem;font-weight:700;letter-spacing:.03em;
+  padding:9px 14px;border-radius:999px;white-space:nowrap;
+}
+.story-nav a.active{background:rgba(255,255,255,.12);color:#fff}
+.reunion{
+  margin:72px auto 20px;
+  padding:42px 30px;
+  max-width:680px;
+  text-align:center;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:24px;
+  background:linear-gradient(180deg,rgba(183,43,73,.13),rgba(255,255,255,.025));
+}
+.reunion .update{
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:.72rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+  color:#d8bbc2;margin-bottom:14px;
+}
+.reunion h2{margin:0 0 18px;font-size:clamp(2rem,6vw,3.2rem);font-weight:400;color:#fff8fa}
+.reunion p{margin:0 auto;max-width:560px;font-size:clamp(1.08rem,3vw,1.3rem);line-height:1.85;color:#f1e6e9}
+.reunion strong{color:#ffc2cf}
+@media(max-width:520px){
+  .story-nav{top:10px}
+  .story-nav a{font-size:.68rem;padding:8px 11px}
+  .reunion{padding:34px 20px}
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="story-nav" aria-label="Our story">
+  <a href="index.html">Home ❤️</a>
+  <a class="active" href="breakup.html">A Stupid Decision 😭</a>
+</nav>
+
+<div class="glow"></div>
+
+<main>
+<section class="hero">
+  <div class="small">46 hours after losing you</div>
+  <h1>I miss you.</h1>
+  <div class="heart">♥</div>
+</section>
+
+<section class="message">
+
+  <p class="lead">
+    Katieee, I know I was dramatic. I overreacted.
+    <span class="highlight">That was on me.</span>
+  </p>
+
+  <p>
+    I even spoke to your mum and told her that I didn’t think this would work.
+    And now I’m sitting here realizing how stupidly certain I was about something
+    I clearly wasn’t ready to lose.
+  </p>
+
+  <p class="lead">
+    You not being in my life has left a void I genuinely cannot imagine getting used to.
+  </p>
+
+  <p>
+    I know you blocked me on WhatsApp. I tried BOTIM too, and later I was blocked there.
+    You unfriended me on Snapchat, and we never followed each other on Instagram.
+    I understand why you reacted the way you did.
+  </p>
+
+  <div class="divider"></div>
+
+  <div class="direct">
+    <p>
+      But Katieee, if you ever come back to this website and see this message:
+      <strong>please unblock me on WhatsApp and just drop me a text.</strong>
+      Or ring me once on BOTIM. I will call you back.
+    </p>
+  </div>
+
+  <p>
+    I’m not asking you to pretend nothing happened.
+    I’m asking for one more conversation — without the drama, without the ego,
+    and without either of us throwing away something that mattered because of one bad moment.
+  </p>
+
+  <p class="forever">
+    And if we come back to each other this time,
+    <span class="highlight">let’s stick together for life.</span>
+  </p>
+
+  <p>
+    I meant what I said about us. I meant what I imagined for us.
+    And if you still want me there, I will come down to
+    <strong>Goa in December</strong> to meet your family properly.
+  </p>
+
+  <p>
+    Maybe this whole mess becomes our canon event.
+    Maybe years from now we tell our children and grandchildren about the ridiculous time
+    we broke up, blocked each other everywhere, and I ended up leaving a message for you
+    on a website because I had finally realized what losing you actually felt like.
+  </p>
+
+  <p class="lead">
+    I don’t want this to be the end of our story.
+  </p>
+
+  <p>
+    So if you ever read this and there is even a little part of you that still wants us,
+    you know where to find me.
+  </p>
+
+  <p class="forever">
+    Till I hear from you…<br>
+    I miss you, Katieee.
+  </p>
+
+  <div class="signature">Kev.</div>
+</section>
+
+
+<section class="taj">
+  <div class="kicker">one more thing</div>
+  <h2>My little Taj Mahal for you.</h2>
+
+  <div class="taj-copy">
+    <p class="big">
+      It hurts to think that these pictures might stay virtual forever.
+      That all these little versions of us we imagined might be the closest
+      I ever get to actually standing beside you.
+    </p>
+
+    <p>
+      Maybe I’ll never get to see you in real life.
+      I really hope that isn’t how our story ends.
+    </p>
+
+    <p>
+      But whatever happens, I’m going to keep this little corner of the internet
+      alive for as long as I possibly can.
+    </p>
+
+    <p>
+      I built it when you were in my life, and now it holds a piece of everything
+      I felt for you.
+    </p>
+
+    <p class="big">
+      The Taj Mahal was built for someone deeply loved.
+      I obviously can’t build you one of those… so I built you
+      <span class="site-name">katieee.com</span>.
+    </p>
+
+    <p>
+      My tiny, slightly ridiculous, digital Taj Mahal.
+    </p>
+  </div>
+
+  <div class="memory-grid">
+    <figure class="memory-card">
+      <img src="memory-us-1.jpg" alt="A virtual picture of us together">
+      <figcaption>One of the little versions of us I got to keep.</figcaption>
+    </figure>
+
+    <figure class="memory-card">
+      <img src="memory-mars.jpg" alt="A virtual picture of us together under a blanket on Mars">
+      <figcaption>You. Me. Anywhere.</figcaption>
+    </figure>
+
+    <figure class="memory-card">
+      <img src="memory-us-2.jpg" alt="Another virtual picture of us together">
+      <figcaption>Maybe virtual. Still precious to me.</figcaption>
+    </figure>
+  </div>
+
+  <p class="taj-signoff">
+    For you, my Katieee. ♥<br>
+    <span class="signature">— Kev</span>
+  </p>
+</section>
+
+<div class="footer">
+  No buttons. No countdown. No clever website trick.<br>
+  Just the one thing I needed you to know.
+</div>
+
+<section class="reunion">
+  <div class="update">update — 46 hours later</div>
+  <h2>I got you back. ❤️</h2>
+  <p>
+    So this page gets to stay — not as the ending of our story, but as proof that
+    we almost made a <strong>very stupid decision</strong>. Forty-six hours was enough.
+    I would really prefer we never run that experiment again.
+  </p>
+</section>
+
+</main>
+
+
+
+</body>
+</html>
