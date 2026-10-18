@@ -62,6 +62,22 @@
       position:relative;
     }
 
+    body:after{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      background:
+        linear-gradient(145deg, rgba(77,7,25,.70), rgba(125,21,49,.58), rgba(176,40,75,.64)),
+        url('katieee-bg.jpg');
+      background-size:cover;
+      background-position:center 18%;
+      opacity:.28;
+      filter:blur(2px) brightness(.78) saturate(.9);
+      transform:scale(1.03);
+    }
+
     body:before{
       content:"";
       position:fixed;
@@ -196,11 +212,11 @@
     .wrap{
       width:min(900px,100%);
       position:relative;
-      z-index:1;
+      z-index:2;
     }
 
     .hero,.section{
-      background:linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.05));
+      background:linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.07));
       border:1px solid var(--line);
       border-radius:32px;
       box-shadow:0 28px 72px var(--shadow);
