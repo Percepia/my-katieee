@@ -893,6 +893,23 @@
   .countdown-separator{display:none}
 }
 
+
+    .milestones-link{
+      display:flex;align-items:center;gap:14px;max-width:650px;margin:22px auto 0;
+      padding:20px 22px;border-radius:22px;text-decoration:none;color:#fff9fb;
+      background:linear-gradient(120deg,rgba(97,9,38,.66),rgba(175,40,80,.32));
+      border:1px solid rgba(255,228,238,.38);
+      box-shadow:0 12px 34px rgba(34,4,15,.19);
+      transition:transform .2s ease,border-color .2s ease;
+    }
+    .milestones-link:hover{transform:translateY(-2px);border-color:rgba(255,235,245,.85)}
+    .milestones-link:focus-visible{outline:3px solid #fff;outline-offset:4px}
+    .milestones-lock{font-size:1.55rem;flex:none}
+    .milestones-copy{flex:1;min-width:0;text-align:left;display:flex;flex-direction:column;gap:5px}
+    .milestones-copy strong{font:700 clamp(.96rem,2.8vw,1.22rem)/1.4 'Segoe UI',system-ui,sans-serif}
+    .milestones-copy small{font:400 .82rem/1.5 'Segoe UI',system-ui,sans-serif;color:#ffe0e9}
+    .milestones-arrow{font:700 1.45rem/1 'Segoe UI',system-ui,sans-serif}
+    @media(max-width:520px){.milestones-link{padding:17px 15px;gap:10px}}
 </style>
 </head>
 <body class="locked">
@@ -959,6 +976,29 @@
       </div>
     </section>
 
+    <section class="section">
+      <h2>Can’t wait to see you IRL ❤️</h2>
+      <div class="letter">
+        <p>
+          I love our calls, our messages, and all the little pieces of you I get through a screen.
+          But I honestly can’t wait for the day I get to see you in real life.
+        </p>
+        <p>
+          No loading screen. No camera turning on. No distance between us.
+          Just you, right there in front of me.
+        </p>
+        <p>
+          I already know I’m going to be ridiculously excited, probably smiling like an idiot,
+          trying to act normal and completely failing at it.
+        </p>
+        <p>
+          And I think that first real moment — actually seeing you, hearing you, standing next to you —
+          is going to stay with me for a very, very long time.
+        </p>
+      </div>
+    </section>
+
+
     <section class="section breakup-chapter private-chapter">
       <a href="only-for-your-eyes.html" aria-label="Open password-protected private page">
         <div class="chapter-kicker">a secret little corner 🔒</div>
@@ -1015,52 +1055,14 @@
         <div class="text">since our first call on 10 Aug 2026</div>
       </div>
 
-      <div class="stats">
-        <div class="stat">
-          <span class="emoji">📞</span>
-          <div class="label">First Call</div>
-          <div class="value">10 Aug 2026</div>
-        </div>
-
-        <div class="stat">
-          <span class="emoji">🎥</span>
-          <div class="label">First Video Call</div>
-          <div class="value">16 Sept 2026</div>
-        </div>
-
-        <div class="stat">
-          <span class="emoji">❤️</span>
-          <div class="label">First “I love you”</div>
-          <div class="value">2 Oct 2026</div>
-        </div>
-
-        <div class="stat">
-          <span class="emoji">😘</span>
-          <div class="label">First Kiss Emoji</div>
-          <div class="value">5 Oct 2026</div>
-        </div>
-      </div>
-    </section>
-    <section class="section">
-      <h2>Can’t wait to see you IRL ❤️</h2>
-      <div class="letter">
-        <p>
-          I love our calls, our messages, and all the little pieces of you I get through a screen.
-          But I honestly can’t wait for the day I get to see you in real life.
-        </p>
-        <p>
-          No loading screen. No camera turning on. No distance between us.
-          Just you, right there in front of me.
-        </p>
-        <p>
-          I already know I’m going to be ridiculously excited, probably smiling like an idiot,
-          trying to act normal and completely failing at it.
-        </p>
-        <p>
-          And I think that first real moment — actually seeing you, hearing you, standing next to you —
-          is going to stay with me for a very, very long time.
-        </p>
-      </div>
+      <a class="milestones-link" href="milestones.html" aria-label="Unlock our more important milestones">
+        <span class="milestones-lock" aria-hidden="true">🔒</span>
+        <span class="milestones-copy">
+          <strong>More important milestones, click here ❤️</strong>
+          <small>Only for my sweetheart — password required</small>
+        </span>
+        <span class="milestones-arrow" aria-hidden="true">→</span>
+      </a>
     </section>
 <section class="section">
       <h2>Things I never thought I'd miss</h2>
@@ -1289,10 +1291,7 @@ const sections = document.querySelectorAll('.section');
       const now = new Date();
       const today = String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
       const specialDays = {
-        '08-10': 'Happy first-call day ❤️',
-        '09-16': 'Happy first-video-call day ❤️',
-        '10-02': 'Happy first “I love you” day ❤️',
-        '10-05': 'Happy first kiss-emoji day ❤️'
+        '08-10': 'Happy first-call day ❤️'
       };
       if(specialDays[today]){
         const banner = document.getElementById('anniversaryBanner');

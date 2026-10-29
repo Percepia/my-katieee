@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#5a1026">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Our Little Milestones ❤️</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+*{box-sizing:border-box}
+html{min-height:100%;background:#320915}
+body{margin:0;min-height:100vh;font-family:Georgia,"Times New Roman",serif;color:#fff4f7;
+background:radial-gradient(circle at 20% 10%,#922f52 0%,transparent 40%),linear-gradient(145deg,#410d20,#7c1e3d 62%,#521027);display:flex;justify-content:center;padding:70px 18px}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(145deg,rgba(44,4,17,.80),rgba(59,7,25,.70)),url('katieee-bg.jpg') center 25%/cover no-repeat;opacity:.38}
+main{width:min(620px,100%);position:relative;z-index:1}
+.topnav{display:flex;justify-content:center;gap:20px;margin-bottom:38px;font:600 13px/1.4 system-ui,sans-serif}
+.topnav a{color:#ffdce6;text-decoration:none;border-bottom:1px solid #dc9bb0;padding-bottom:4px}
+.card{background:rgba(73,12,35,.73);border:1px solid rgba(255,233,241,.26);box-shadow:0 20px 75px rgba(21,2,9,.26);backdrop-filter:blur(16px);border-radius:26px;padding:clamp(26px,6vw,52px);text-align:center}
+.eyebrow{font:700 11px/1.5 system-ui,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:#ffd1de}
+h1{font-size:clamp(2.3rem,8vw,4.4rem);line-height:1.08;font-weight:400;margin:12px 0 16px;letter-spacing:-.045em}
+p{line-height:1.8;color:#ffedf2;font-size:1.07rem}
+form{margin:26px auto 8px;max-width:370px}
+label{display:block;text-align:left;font:600 13px/1.5 system-ui,sans-serif;margin:0 0 8px;color:#ffe2eb}
+input{width:100%;padding:15px 16px;border:1px solid rgba(255,240,245,.5);background:rgba(16,3,8,.3);color:#fff;border-radius:12px;font:16px system-ui,sans-serif;outline-offset:3px}
+input:focus{outline:2px solid #ffd3df}
+button{margin-top:14px;width:100%;border:0;border-radius:12px;padding:15px 20px;background:#ffe4ec;color:#501027;font:700 15px system-ui,sans-serif;cursor:pointer}
+button:hover{background:#fff}
+button:disabled{opacity:.55;cursor:wait}
+.error{min-height:23px;font:13px/1.6 system-ui,sans-serif;color:#ffe3ab;margin-top:13px}
+.hint{margin-top:20px;color:#efb8c9;font:12px/1.6 system-ui,sans-serif}
+#secret{display:none;text-align:left}
+#secret.open{display:block}
+#gate.unlocked{display:none}
+.letter h2{font-size:clamp(2.5rem,8vw,3.8rem);font-weight:400;margin:13px 0 26px}
+.letter p{margin-bottom:19px}
+.letter .ending{font-size:1.45rem;color:white}
+.signature{text-align:right;color:#ffd4e0;font-size:1.4rem;font-style:italic;margin-top:30px}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+
+.private-heading{font-size:clamp(2rem,7vw,3.2rem);line-height:1.15;text-align:center;letter-spacing:-.04em}
+.private-intro{text-align:center;margin:12px 0 28px}
+.moment-list{display:grid;gap:12px;margin-top:25px}
+.moment{display:flex;align-items:center;gap:17px;padding:18px 18px;border-radius:18px;border:1px solid rgba(255,240,247,.23);background:rgba(16,3,8,.24)}
+.moment-icon{font-size:1.7rem;flex:none}
+.moment-label{font:700 .93rem/1.5 'Segoe UI',system-ui,sans-serif;color:#ffe6ee}
+.moment-date{font:400 1.07rem/1.5 Georgia,serif;color:#fff}
+.private-ending{text-align:center;margin-top:33px!important;font-style:italic}
+@media(max-width:390px){.moment{gap:10px;padding:14px}.moment-icon{font-size:1.35rem}}
+</style>
+</head>
+<body>
+<main>
+  <nav class="topnav" aria-label="Site pages">
+    <a href="index.html">Home ❤️</a>
+    <a href="breakup.html">Our 46-hour chapter</a>
+  </nav>
+  <div class="card">
+    <section id="gate">
+      <div class="eyebrow">the moments that are ours</div>
+      <h1>Only for My Sweetheart ❤️</h1>
+      <p>Our most important milestones are just for you. Enter the password to see them.</p>
+      <form id="unlockForm">
+        <label for="secretPassword">Our secret password</label>
+        <input id="secretPassword" type="password" autocomplete="off" required placeholder="Password">
+        <button type="submit" id="unlockBtn">Unlock our milestones ♡</button>
+      </form>
+      <div class="error" role="status" aria-live="polite" id="error"></div>
+      <p class="hint">Just for my sweetheart. ❤️</p>
+    </section>
+    <section id="secret" aria-live="polite"></section>
+  </div>
+</main>
+<script>
+(() => {
+  const salt='j29d9/96Y0MZMrO0IL/bsw==';
+  const iv='6XFnOoGEXTP6TfuW';
+  const ciphertext='MQjIinaZ81xcneunuOJEiFZFiSrcgCIxPdijl24vRNPh1qlu8koZWSDSJ5oU6zWdrkOHDTDygz/BiracnQAqY4q8QcVs39/OQiwmD5YwQ5qn8wjesb8YPWIr+LqGrRmc0rP6MT3BhixmuancxnvEGVZYQUkSA6KMPk29/ydXJlShzqow4yxfVqbjStuc/UxkOfIha98998bkHpzR1DCCEeKu5Lg14gA60vyDCv6eQOR8frLiqWEgoZX/lKRxQD2GN+YP9SOeHUJY2qZe2gEkjSea8X+ekYGUAjAnRqAeAq39S4c5ts/pUInm1X3IL2qgFS1kDvrcwgAhKPcxjnnl2ndIBI3XxLSQyiQnIfaVwSZ2XLtA9vZibpDnGhasmfPz52D8tirrnY3e3UsAMHm7k/1q2Z85k7OHVpm2Si8hUBKvAIALtnHRJpch7fFK6swV+FgsQJfW92lLKkru7gkfBK6ET+IiG7HfFYG9ySQ5uoW8tSaOupKkths+ES8LcbTJ+nDOnXBAmld3f4G652fgNwSqPrOQe+iFiqdYmX8NLAyR/XDB/FijajL8vNpyjw69E9OY0qYpTWZZRuAyH7lp/WveGa/OR1r+6UMxBM2fW5wIpjZJ8uYdUxn3ayo1t53gO8RGEBgQwWcu32KnAxiNGCibmNmeCRJ3P6atGHZYaIM5JtLPtbkcl/HKiS3//LjHH7Xy/w+B5zr9YwowqXY9/IGkPVIPET95+dc0TMj4zeC+7ykaNSLH58vK/8HLkBRoKRvgFCeT9l+owc6QyucMMQof+059pPwEDMLS56at6SPTSvfsCV/6ldK0NQXDhjN3UGb0401qxqxrE3nRjF0ScAQqdqTfTGor45CFsjMBfQz2uryjHmFxHcc/ymZyDtMR9rIskkCRnOArSfjgZaumgusOELx21UnE76r8BuHU2llR5wu4z/rHMkZV+IpJ6539uBGvT6oiRgUMJksCkObY5RlZaYzdLuZs3sUGTyLw+Cyst2XP30YJ7iPqB+FUZQiKdRQj5kxjv6plJSIQnMhPpvnZCsueepQXyWAMBKRrs1rX6daHAuEGPuFgahEKHCKz13VLKZXaBHs+fLkjh58gF3NK+ZRk/0LrpJjbOp5UbE0Oc3TxOPdpBZI9qW5xzkNhuP0Z05s/KY4Whq/LuTMTZHi3NyJeiCyUV9Ll+J7g6yjDqjwvYedcrlH037u1UwZFvnLpEhv62tyDZnNMgcFdSmK7fpXQ+j0HGSYku1/6b+wRMe9vESsxGqpLQjuW8sm5Ktb61yf2GeDH5G/49EGxh1yMwjXfSHVdRBgjSmIGKJmQIWH/pjOpOYVdJI4ZYn6Jo9i3spduWBevLpgbkLUgeu2MnuOyv4bx6tBcCPFP4WSzEkWF06r80aCqdxzNa4jLw7Nx9WWTC3FvqnyCZ8nZEpQRHqpSi/Fo1Fl6iLrooKzfhtsPe9QeLw2ZDoVzqklVqumERxzL5XUvNxySUydjHP3WnGUl9wrmHIqdSyqqqISxPVDOgRSMjCtiMC0/K/mUop7Dzj/5UMiKxyPLut6MZWztoSxjfy4oMNQXxrinl9LIl+mk8JtPEXggMfYyK9LDjnLhwimXUe1O7BdV9X1gHaaEVjcu9S9HOn9q6oBdH8whXNhSvZ9D2uCHaqCchWPlSxyLAHmsgyWPD5IiBk8jXFlXsxedUKu1qgmMsmD9PpI88oyZcwY9xlwqnP1dSTiqkA56O837ScLT6lvS2MZHzALl/s+vhExBzAjNY6xKFmqruh//4vovWIHoh7CFjswY4QG0jTd+t4yQ9Lg1zHwH8xpTY7n1kZ9Mofd28JFLUjkpCF3kgzhb2pX2Aifum83Lgi+WyNZRRbiVe/D7bp2X0v0cKaSemJHInrLrV4SnG9SvV+jemKz9mV+LbZc=';
+  const iterations=250000;
+  const form=document.getElementById('unlockForm');
+  const input=document.getElementById('secretPassword');
+  const button=document.getElementById('unlockBtn');
+  const error=document.getElementById('error');
+  const gate=document.getElementById('gate');
+  const secret=document.getElementById('secret');
+  function decode(s){return Uint8Array.from(atob(s),c=>c.charCodeAt(0));}
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    error.textContent='';
+    if(!window.crypto || !crypto.subtle){
+      error.textContent='This browser cannot unlock the letter. Try the published HTTPS website.';
+      return;
+    }
+    button.disabled=true;
+    button.textContent='Opening...';
+    try{
+      const keyMaterial=await crypto.subtle.importKey(
+        'raw',new TextEncoder().encode(input.value),'PBKDF2',false,['deriveKey']
+      );
+      const key=await crypto.subtle.deriveKey(
+        {name:'PBKDF2',salt:decode(salt),iterations,hash:'SHA-256'},
+        keyMaterial,{name:'AES-GCM',length:256},false,['decrypt']
+      );
+      const bytes=await crypto.subtle.decrypt(
+        {name:'AES-GCM',iv:decode(iv)}, key,decode(ciphertext)
+      );
+      secret.innerHTML=new TextDecoder().decode(bytes);
+      secret.classList.add('open');
+      gate.classList.add('unlocked');
+      input.value='';
+    }catch{
+      error.textContent="Not quite, sweetheart. Try again. ❤️";
+      input.select();
+    }finally{
+      button.disabled=false;
+      button.textContent='Unlock our milestones ♡';
+    }
+  });
+})();
+</script>
+</body>
+</html>
