@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#102f61" />
+  <meta name="theme-color" content="#63c5fc" />
   <title>My Katieee ❤️</title>
   <link rel="canonical" href="https://katieee.com/" />
   <meta name="description" content="A little corner of the internet made for my Katieee — our calls, our milestones, and all the little moments that made me fall for you." />
@@ -910,6 +910,113 @@
     .milestones-copy small{font:400 .82rem/1.5 'Segoe UI',system-ui,sans-serif;color:#ffe0e9}
     .milestones-arrow{font:700 1.45rem/1 'Segoe UI',system-ui,sans-serif}
     @media(max-width:520px){.milestones-link{padding:17px 15px;gap:10px}}
+
+/* ============================================
+   BRIGHT SKY BLUE — refreshed, vivid & readable
+   ============================================ */
+:root{
+  --bg1:#5cbffc;
+  --bg2:#87d7ff;
+  --bg3:#43adef;
+  --card:rgba(250,254,255,.93);
+  --card-strong:#ecf8ff;
+  --line:rgba(16,91,150,.15);
+  --text:#133d64;
+  --soft:#466c90;
+  --accent:#1473bd;
+  --gold:#bd3b79;
+  --heart:#ee527d;
+  --shadow:rgba(17,100,168,.14);
+}
+html,body{color:var(--text)}
+body{
+  background:
+    radial-gradient(ellipse 70% 26% at 7% 5%,rgba(255,255,255,.88),transparent 80%),
+    radial-gradient(ellipse 60% 24% at 95% 38%,rgba(42,169,255,.50),transparent 85%),
+    radial-gradient(ellipse 80% 30% at 5% 93%,rgba(255,255,255,.50),transparent 83%),
+    linear-gradient(150deg,#78d0ff 0%,#a6e7ff 33%,#65c5fb 68%,#8cddff 100%);
+  background-attachment:fixed;
+}
+/* The old portrait overlay was darkening the entire design. Keep the photo file, but don't overlay it. */
+body::after{display:none!important}
+body::before{opacity:.15;background-image:radial-gradient(rgba(255,255,255,.8) 1px,transparent 1px)}
+.hero,.section{
+  background:linear-gradient(145deg,rgba(255,255,255,.96),rgba(236,249,255,.94));
+  border:1px solid rgba(255,255,255,.88);
+  box-shadow:0 12px 44px rgba(26,107,169,.12), 0 1px 0 rgba(255,255,255,.96) inset;
+  backdrop-filter:blur(9px);
+}
+.hero{
+  background:
+    radial-gradient(circle at 90% 5%,rgba(68,184,255,.18),transparent 45%),
+    linear-gradient(135deg,#ffffff 2%,#eaf8ff 100%);
+}
+h1,.entry-card h2,.section h2,.breakup-chapter h2,.meet-countdown h2{color:#0d4c83!important;text-shadow:none}
+.sub,.letter,.letter p,.closing,.thought-card p,.reveal-wrap p,
+.secret p,.call-message p,.miss,.love-card,.future-card,
+.stat .value,.call-name,.breakup-chapter p,.countdown-note,
+.countdown-note strong,.meeting-date,.countdown-note strong,
+.countdown-numbers,.counter .text{color:#234f75!important}
+.tag,.entry-card .tiny,.countdown-kicker,.chapter-kicker,.countdown-kicker,
+.stat .label,.call-status,.thought-card .mini,.breakup-chapter .chapter-kicker{color:#376e9c!important;opacity:1}
+.highlight,.closing strong,.miss strong,.love-card strong,.future-card strong,
+.counter .count{color:#bc3c76!important}
+.little-hearts,.footer-hearts,.sign{color:#e64782}
+.counter,.thought-card,.call-card,.secret.show,.call-message.show,
+.stat,.miss,.love-card,.future-card{
+  background:rgba(232,247,255,.90);
+  border-color:rgba(63,148,205,.22);
+  box-shadow:0 8px 22px rgba(18,111,174,.08);
+}
+.call-avatar,.secret-heart{background:#d9f0ff;border-color:#a8d8f5;color:#d13d78}
+.call-name{color:#104c80!important}
+.call-status,.counter .text{color:#3a6b93!important}
+/* Bright blue countdown: blue tiles, white digits, excellent contrast */
+.meet-countdown{
+  background:linear-gradient(145deg,#f9feff,#e4f6ff);
+}
+.meet-countdown::before{background:radial-gradient(circle at 50% 0,rgba(64,176,242,.20),transparent 65%)}
+.countdown-unit{
+  background:linear-gradient(140deg,#147ed2,#0867b8);
+  border:1px solid rgba(255,255,255,.6);
+  box-shadow:0 7px 19px rgba(22,117,189,.18);
+}
+.countdown-value,.countdown-label{color:#fff!important}
+.countdown-separator{color:#1687d2}
+.countdown-note strong{color:#b62969!important}
+.milestones-link{
+  background:linear-gradient(125deg,#1687d8,#075fae);
+  border-color:rgba(20,100,170,.24);
+  box-shadow:0 10px 25px rgba(13,107,183,.18);
+  color:#fff!important;
+}
+.milestones-copy strong,.milestones-copy small,.milestones-lock,.milestones-arrow{color:#fff!important}
+.breakup-chapter{background:linear-gradient(125deg,#ffffff,#e8f7ff)}
+.breakup-chapter .arrow{color:#0975c5}
+.story-nav{background:rgba(255,255,255,.95);border-color:rgba(37,124,192,.2);box-shadow:0 7px 25px rgba(15,101,166,.16)}
+.story-nav a{color:#155b94}
+.story-nav a.active{background:#1379c7;color:#fff}
+.entry-screen{
+  background:
+    radial-gradient(circle at 10% 20%,rgba(255,255,255,.9),transparent 40%),
+    radial-gradient(circle at 90% 82%,rgba(28,143,224,.28),transparent 48%),
+    linear-gradient(135deg,#79d0ff,#b4eaff 52%,#6ec9fa);
+}
+.entry-card{
+  background:rgba(255,255,255,.94);
+  border:1px solid rgba(255,255,255,.98);
+  box-shadow:0 22px 60px rgba(11,95,168,.18);
+}
+.entry-card p{color:#365d7d}
+.anniversary-banner{background:#fff;color:#0b629b;border-color:#b1dcfa;box-shadow:0 9px 30px rgba(9,102,169,.13)}
+button:not(.secret-heart){background:linear-gradient(135deg,#147ed0,#0866b5);color:#fff;box-shadow:0 10px 25px rgba(13,108,192,.19)}
+button:hover{filter:brightness(1.065)}
+.decline{background:#ed4879!important;color:#fff!important}
+.answer{background:#087ac6!important;color:#fff!important}
+.toast{background:#095795;border-color:#a8d9ff;color:white}
+.secret-heart:hover{background:#e9f8ff}
+@media(max-width:720px){.hero,.section{box-shadow:0 7px 26px rgba(25,101,167,.11)}}
+
 </style>
 </head>
 <body class="locked">
